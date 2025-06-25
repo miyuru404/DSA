@@ -188,6 +188,14 @@ class BinaryTree {
 
         return root;
     }
+    int index = 0; // Use instance variable or pass via object reference
+
+    public void assignSortedValues(Node root, List<Integer> sortedValues) {
+        if (root == null) return;
+        assignSortedValues(root.left, sortedValues);
+        root.value = sortedValues.get(index++);
+        assignSortedValues(root.right, sortedValues);
+    }
 
 }
 
