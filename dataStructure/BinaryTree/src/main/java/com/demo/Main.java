@@ -1,15 +1,36 @@
 package com.demo;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
+
+        //BinaryTree tree = new BinaryTree();
+        //tree.insert(10);
+        //tree.insert(5);
+        //tree.insert(15);
+        //System.out.print("Inorder traversal: ");
+        //tree.inorder();  // Output: 5 10 15
+
         BinaryTree tree = new BinaryTree();
+        tree.insertManually();
+        tree.inorder();
 
-        tree.insert(10);
-        tree.insert(5);
-        tree.insert(15);
+        List<Integer> list = new ArrayList<Integer>();
+        tree.storeInorder(tree.root,list);
+        System.out.println(list);
 
-        System.out.print("Inorder traversal: ");
-        tree.inorder();  // Output: 5 10 15
+        Collections.sort(list);
+        //System.out.println(list);
+
+        BinaryTree newBST = new BinaryTree();
+        newBST.root = newBST.createNewBST(list);
+        newBST.inorder();
+        System.out.println(newBST.root.value);
+
     }
 }
 
@@ -39,7 +60,7 @@ class BinaryTree {
         root = insertRec(root, value);
     }
 
-    // RECURSIVE insert helper method (place it here too)
+    // RECURSIVE insert helper method
     private Node insertRec(Node root, int value) {
         if (root == null) {
             root = new Node(value);
@@ -54,6 +75,18 @@ class BinaryTree {
 
         return root;
     }
+
+    public Node insertManually(){
+        root = new Node(10);
+        root.left = new Node(30);
+        root.right = new Node(15);
+        root.left.left = new Node(20);
+        root.right.left = new Node(5);
+        root.right.right = new Node(25);
+
+        return root;
+    }
+
 
     // Optional: Traversal methods like inorder can also go here
     public void inorder() {
@@ -127,6 +160,34 @@ class BinaryTree {
         return node;
     }
 
+    public void storeInorder(Node root, List<Integer> list){
+        if(root == null) return;
+        storeInorder(root.left,list);
+        list.add(root.value);
+        storeInorder(root.right,list);
+    }
+    public void sortList(List<Integer> list){
+        Collections.sort(list);
+    }
+
+    public Node createNewBST(List<Integer> list ){
+        Node newRoot = null;
+        for (int val : list) {
+            newRoot = createNewBSTREC(newRoot, val);
+        }
+        return newRoot;
+    }
+
+    public  Node createNewBSTREC(Node root , int value){
+        if (root == null) return new Node(value);
+
+        if (value < root.value)
+            root.left = createNewBSTREC(root.left, value);
+        else
+            root.right = createNewBSTREC(root.right, value);
+
+        return root;
+    }
 
 }
 
