@@ -42,7 +42,7 @@ public class Main2 {
         tree.index = 0;                                // reset index for assignment
         tree.assignSortedValues(tree.root, values);    // reassign values in inorder
         System.out.print("Converted BST (same structure): ");
-        tree.inorder(); // ✅ Now should be sorted!
+        tree.inorder(); //
     }
 
 }
