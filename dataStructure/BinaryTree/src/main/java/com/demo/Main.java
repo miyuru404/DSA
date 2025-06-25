@@ -14,21 +14,7 @@ public class Main {
         //System.out.print("Inorder traversal: ");
         //tree.inorder();  // Output: 5 10 15
 
-        BinaryTree tree = new BinaryTree();
-        tree.insertManually();
-        tree.inorder();
 
-        List<Integer> list = new ArrayList<Integer>();
-        tree.storeInorder(tree.root,list);
-        System.out.println(list);
-
-        Collections.sort(list);
-        //System.out.println(list);
-
-        BinaryTree newBST = new BinaryTree();
-        newBST.root = newBST.createNewBST(list);
-        newBST.inorder();
-        System.out.println(newBST.root.value);
 
     }
 }
