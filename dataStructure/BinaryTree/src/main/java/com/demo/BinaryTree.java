@@ -147,43 +147,64 @@ public class BinaryTree {
             node = node.left;
         }
         return node;
+
     }
 
+
     public void storeInorder(Node root, List<Integer> list){
+
         if(root == null) return;
+
         storeInorder(root.left,list);
         list.add(root.value);
         storeInorder(root.right,list);
-    }
-    public void sortList(List<Integer> list){
-        Collections.sort(list);
+
     }
 
+
+    public void sortList(List<Integer> list){
+
+        Collections.sort(list);
+
+    }
+
+
     public Node createNewBST(List<Integer> list ){
+
         Node newRoot = null;
+
         for (int val : list) {
             newRoot = createNewBSTREC(newRoot, val);
         }
         return newRoot;
+
     }
+
 
     public  Node createNewBSTREC(Node root , int value){
+
         if (root == null) return new Node(value);
 
-        if (value < root.value)
+        if (value < root.value){
             root.left = createNewBSTREC(root.left, value);
-        else
+        }
+        else {
             root.right = createNewBSTREC(root.right, value);
+        }
 
         return root;
+
     }
-    int index = 0; // Use instance variable or pass via object reference
+
+    int index = 0;
 
     public void assignSortedValues(Node root, List<Integer> sortedValues) {
+
         if (root == null) return;
         assignSortedValues(root.left, sortedValues);
         root.value = sortedValues.get(index++);
         assignSortedValues(root.right, sortedValues);
+
     }
 
-}
+}// end of the class
