@@ -1,9 +1,8 @@
 package com.demo;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.security.spec.RSAOtherPrimeInfo;
+import java.util.*;
 
 public class FileHandaling {
 
@@ -45,6 +44,7 @@ public class FileHandaling {
     public static void readFileUsingBufferedReader(String filePath){
 
         try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
+
             List<String> list = new ArrayList<String>();
             String line;
             while((line = reader.readLine()) != null){
@@ -55,6 +55,49 @@ public class FileHandaling {
         }
         catch(IOException e){
             System.out.println("coudn't read the file " + e);
+        }
+
+    }
+
+    public static void readNumbers(String filePath){
+
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
+            String line;
+            while((line = reader.readLine()) != null){
+
+                String[] tokens = line.trim().split("\\s+");
+                HashSet<Integer> valuesSet = new HashSet<>();
+                boolean duplicate = false;
+
+                for (String token : tokens) {
+
+                    int number = Integer.parseInt(token);
+
+                    if (valuesSet.contains(number)) {
+                        duplicate = true;
+                        System.out.println("Duplicate value found: " + number);
+                        break; // stop processing further
+
+                    } else {
+                        valuesSet.add(number); // add to set
+                    }
+
+
+                }
+                if(duplicate){
+                    System.out.println("Can't process due to a duplicate value");
+                }
+                else {
+                System.out.println(valuesSet);
+                }
+            }
+
+        }
+        catch (IOException e){
+            System.err.println("cannot read the file");
+        }
+        catch (NumberFormatException e){
+            System.out.println("file contain non-integer values");
         }
 
     }
@@ -81,8 +124,9 @@ public class FileHandaling {
     public static void main(){
 
         //createFile("src/inputs/text2"," new data ");
-        readFileUsingBufferedReader( "src/inputs/text2" );
-        readFileUsingScanner( "src/inputs/text2" );
+        //readFileUsingBufferedReader( "src/inputs/text2" );
+        //readFileUsingScanner( "src/inputs/text2" );
+        readNumbers("src/inputs/text2");
 
     }
 }
