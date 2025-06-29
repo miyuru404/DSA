@@ -1,5 +1,21 @@
 package org.example;
 
+
+/*
+ * This method sorts an integer array using the Selection Sort algorithm.
+ * It works by dividing the array into a sorted and an unsorted part.
+ * During each pass, it finds the smallest element in the unsorted part
+ * and swaps it with the first unsorted element. This process continues
+ * until the array is fully sorted.
+ *
+ * Time Complexity:
+ * - Best Case:    O(n^2)
+ * - Worst Case:   O(n^2)
+ * - Average Case: O(n^2)
+ *
+ * Space Complexity: O(1) – It sorts the array in-place.
+ */
+
 public class SelectionSort {
     public static void main(String[] args) {
 
