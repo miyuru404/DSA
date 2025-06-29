@@ -4,6 +4,17 @@ public class Main {
     public static void main(String[] args) {
 
         int[] arr = {2,5,8,1,3,4,7,6,9,};
+        System.out.println();
+
+        arr =ArrayOperation.addValueToEnd(arr,99);
+        System.out.println();
+
+        ArrayOperation.printArray(arr);
+        System.out.println();
+
+        arr = ArrayOperation.addValueAtFirst(arr,88);
+
+        ArrayOperation.printArray(arr);
 
 
 
@@ -56,10 +67,28 @@ class ArrayOperation{
 
         return newArray;
 
-
     }
 
-    public static int[]addValueAtFirst(){return null;}
+    public static int[] addValueAtFirst(int[] arr , int value){
+
+        // create new array with size of old array+1
+        int[] newArray = new int[arr.length+1];
+
+        // add the value to new array first
+        newArray[0] = value;
+
+        // add rest of the values
+        for(int i = 0; i< arr.length;i++ ){
+            newArray[i+1] = arr[i];
+        }
+        System.out.print("old array: ");
+        printArray(arr);
+        System.out.println();
+        System.out.print("new array: ");
+        printArray(newArray);
+
+        return newArray;
+    }
 
     public static int[] addValueAtMiddle(){return null;}
 
