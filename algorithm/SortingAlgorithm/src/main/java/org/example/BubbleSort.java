@@ -9,6 +9,11 @@ public class BubbleSort {
         for (int i : arr) {
             System.out.print(i);
         }
+        System.out.println();
+        bubbleSortDescendingOrder(arr);
+        for (int i : arr) {
+            System.out.print(i);
+        }
     }
 
     public static void bubbleSortAscendingOrder(int[] arr){
@@ -25,12 +30,13 @@ public class BubbleSort {
 
     }
     public static void bubbleSortDescendingOrder(int[] arr){
+
         for(int i = 0; i < arr.length-1 ; i++){
             for(int j = 0; j < arr.length-1-i;j++){
-                if(arr[j]>arr[j+1]){
-                    int temp = arr[j+1];
-                    arr[j+1] = arr[j];
-                    arr[j]=temp;
+                if(arr[j]<arr[j+1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1]=temp;
                 }
             }
         }
