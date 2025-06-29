@@ -23,6 +23,13 @@ class ArrayOperation{
         System.out.println(arr[index]);
     }
 
+    public static void modifyValueByIndex(int[] arr ,int index ,int value){
+        arr[index] = value;
+        printArray(arr);
+    }
+
+
+
 
 
 }
