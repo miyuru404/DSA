@@ -27,6 +27,15 @@ class ArrayOperation{
         arr[index] = value;
         printArray(arr);
     }
+    public static void deleteValueByIndex(int[] arr , int index){
+        for(int i = index ; i<arr.length-1 ;i++){
+            arr[i] = arr[i+1];
+        }
+        arr[arr.length-1] = 0;
+        printArray(arr);
+    }
+
+
 
 
 
