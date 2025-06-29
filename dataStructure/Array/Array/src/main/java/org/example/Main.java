@@ -12,12 +12,17 @@ public class Main {
 
 class ArrayOperation{
 
+
     public static void printArray(int[] arr){
         for(int num:arr){
             System.out.print(num);
         }
-
     }
+
+    public static void getValueByIndex(int[] arr , int index){
+        System.out.println(arr[index]);
+    }
+
 
 
 }
